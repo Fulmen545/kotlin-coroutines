@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.techyourchance.coroutines.common.ScreensNavigator
 import com.techyourchance.coroutines.common.ToolbarDelegate
 import com.techyourchance.coroutines.common.dependencyinjection.ActivityCompositionRoot
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ToolbarDelegate {
 
@@ -52,6 +53,6 @@ class MainActivity : AppCompatActivity(), ToolbarDelegate {
     }
 
     override fun hideUpButton() {
-        btnBack.visibility = View.INVISIBLE
+        btn_back.visibility = View.INVISIBLE
     }
 }
