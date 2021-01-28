@@ -1,13 +1,9 @@
 package com.techyourchance.coroutines.exercises.exercise1
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -53,11 +49,10 @@ class Exercise1Fragment : BaseFragment() {
         btnGetReputation = view.findViewById(R.id.btn_get_reputation)
         btnGetReputation.setOnClickListener {
             logThreadInfo("button callback")
-            val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(it.windowToken, 0)
+            hideKeyboard(it)
             coroutineScope.launch {
                 btnGetReputation.isEnabled = false
-                var reputation = getReputationForUser(edtUserId.text.toString())
+                val reputation = getReputationForUser(edtUserId.text.toString())
                 Toast.makeText(requireContext(), "reputation: $reputation", Toast.LENGTH_SHORT).show()
                 btnGetReputation.isEnabled = true
             }
